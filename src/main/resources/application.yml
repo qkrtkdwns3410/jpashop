@@ -22,3 +22,5 @@ logging:
         org.hibernate.sql: debug
                 
             
+decorator:
+    datasource
