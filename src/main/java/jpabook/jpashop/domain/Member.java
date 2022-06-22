@@ -7,6 +7,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.*;
+
 
 /**
  * packageName    : jpabook.jpashop.domain
@@ -28,12 +30,12 @@ public class Member {
       @GeneratedValue
       @Column(name = "member_id")
       private Long id;
-      private String username;
+      private String name;
       
       @Embedded
       private Address address;
       
-      @OneToMany(fetch = FetchType.EAGER, mappedBy = "member")
+      @OneToMany(fetch = LAZY, mappedBy = "member")
       private List<Order> orders = new ArrayList<>();
       
 }

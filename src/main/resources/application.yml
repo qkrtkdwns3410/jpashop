@@ -4,7 +4,7 @@ server:
 spring:
     datasource:
         url:
-            jdbc:h2:tcp://localhost/~/jpashop
+            jdbc:h2:tcp://localhost/~/jpashop;AUTO_SERVER=TRUE
         username: sa
         password:
         driver-class-name: org.h2.Driver
@@ -20,7 +20,3 @@ spring:
 logging:
     level:
         org.hibernate.sql: debug
-                
-            
-decorator:
-    datasource
