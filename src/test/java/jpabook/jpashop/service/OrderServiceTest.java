@@ -1,17 +1,21 @@
 package jpabook.jpashop.service;
 
+import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.domain.item.Book;
-import jpabook.jpashop.domain.item.Item;
-import org.junit.After;
-import org.junit.Before;
+import jpabook.jpashop.repository.OrderRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import javax.persistence.EntityManager;
+
+import static org.junit.Assert.assertEquals;
 
 
 @RunWith(SpringRunner.class)
@@ -19,23 +23,33 @@ import static org.junit.Assert.*;
 @Transactional
 public class OrderServiceTest {
       
-      @Before
-      public void setUp() throws Exception {
-      }
-      
-      @After
-      public void tearDown() throws Exception {
-      }
+      @Autowired
+      EntityManager em;
+      @Autowired
+      OrderService orderService;
+      @Autowired
+      OrderRepository orderRepository;
       
       @Test
       public void 상품주문() throws Exception {
             //given
             Member member = new Member();
-            Item item = new Book();
+            member.setName("회원1");
+            member.setAddress(new Address("서울", "신림로", "22222"));
+            em.persist(member);
+            
+            Book book = new Book();
+            book.setName("시골 JPA");
+            book.setPrice(10000);
+            book.setStockQuantity(10);
+            
             //when
+            int orderCount = 2;
+            Long orderId = orderService.order(member.getId(), book.getId(), orderCount);
             
             //then
-            
+            Order getOrder = orderRepository.findOne(orderId);
+            assertEquals("상품 주문시 상태는 ORDER", OrderStatus.ORDER, getOrder.getStatus());
       }
       
       @Test

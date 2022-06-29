@@ -2,11 +2,7 @@ package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
-import org.assertj.core.api.Assertions;
-import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 
