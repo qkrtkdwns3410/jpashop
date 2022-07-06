@@ -2,14 +2,14 @@ package jpabook.jpashop.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javax.persistence.FetchType.*;
+import static javax.persistence.FetchType.LAZY;
 
 
 /**
@@ -33,6 +33,8 @@ public class Member {
       @GeneratedValue
       @Column(name = "member_id")
       private Long id;
+      
+      @NotEmpty
       private String name;
       
       @Embedded
