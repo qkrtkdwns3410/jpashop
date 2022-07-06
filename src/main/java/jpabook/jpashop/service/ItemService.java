@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 
@@ -26,6 +27,7 @@ import java.util.List;
 public class ItemService {
       
       private final ItemRepository itemRepository;
+      private EntityManager em;
       
       @Transactional
       public void saveItem(Item item) {
@@ -38,6 +40,16 @@ public class ItemService {
       
       public Item findOne(Long itemId) {
             return itemRepository.findOne(itemId);
+      }
+      
+      /**
+       * 영속성 컨텍스트가 자동 변경
+       */
+      @Transactional
+      public void updateItem(Long id, String name, int price) {
+            Item item = itemRepository.findOne(id);
+            item.setName(name);
+            item.setPrice(price);
       }
       
 }
