@@ -1,5 +1,5 @@
 server:
-    port: 8090
+    port: 9080
 
 spring:
     datasource:
@@ -16,7 +16,10 @@ spring:
             hibernate:
                 show_sql: true
                 format_sql: true
-
+    devtools:
+        livereload:
+            enabled: true
+            port: 35730
 
 logging:
     level:

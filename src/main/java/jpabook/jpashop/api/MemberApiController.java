@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-/**
+/*
  * packageName    : jpabook.jpashop.api
  * fileName       : MemberApiController
  * author         : jihye94
@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
  * -----------------------------------------------------------
  * 2022-07-06        jihye94       최초 생성
  */
+
 @RestController // @controller + @responseBoby(데이터를 json 방식으로 전송) = api 방식 컨트롤러
 @RequiredArgsConstructor
 public class MemberApiController {
